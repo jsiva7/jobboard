@@ -1,4 +1,4 @@
-# pulsifi-jobboard
+# jobboard
 Simple Job Board Project
 
 - List all job created.
