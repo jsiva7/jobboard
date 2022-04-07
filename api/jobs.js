@@ -6,7 +6,7 @@ const db = require("../db");
 const { tokenv, jobv } = require('../middleware');
 
 
-router.get('/api/jobs/list', tokenv(), function (req, res) {
+router.get('/jobs/list', tokenv(), function (req, res) {
 
     async function main() {
         try {
@@ -16,6 +16,8 @@ router.get('/api/jobs/list', tokenv(), function (req, res) {
             res.status(200).json({
                 record: step1
             });
+
+            console.info("/jobs/list -- DONE")
 
         } catch (error) {
             console.log(error)
@@ -46,8 +48,7 @@ router.get('/api/jobs/list', tokenv(), function (req, res) {
 
 });
 
-router.post('/api/jobs/create', jsonParser, tokenv(), jobv(), function (req, res) {
-    console.log(req.body)
+router.post('/jobs/create', tokenv(), jobv(), function (req, res) {
     async function main() {
         try {
 
@@ -56,6 +57,7 @@ router.post('/api/jobs/create', jsonParser, tokenv(), jobv(), function (req, res
 
             if (step1) {
                 res.status(200).send();
+                console.info("/jobs/create -- DONE")
             }
         } catch (err) {
             console.log(err)

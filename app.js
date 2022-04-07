@@ -2,24 +2,23 @@ const express = require('express');
 const app = express();
 const dotenv = require('dotenv').config();
 const port = process.env.PORT;
+const job = require('./api/jobs');
+const token = require('./api/token');
 
-//CORS
 app.use(function (req, res, next) {
-    //Enabling CORS
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", "GET, HEAD, OPTIONS, POST, PUT");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, contentType, Content-Type, Accept, Authorization");
     next();
 });
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static('www'));
-
-var job = require('./api/jobs');
-app.use('/', job);
-
-var token = require('./api/token');
-app.use('/', token);
+app.use('/api/', job);
+app.use('/api/', token);
 
 app.listen(port, () => {
-    console.log("App listening to port - " + port);
+    console.info("App listening to port - " + port);
 });
+
+module.exports = app;
