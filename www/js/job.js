@@ -4,10 +4,10 @@ $(function () {
 
     function getlist() {
         var token = localStorage.getItem("token");
-
+        
         if (token) {
             $.ajax({
-                url: "https://jayjobboard.azurewebsites.net/api/jobs/list",
+                url: "http://localhost:9696/api/jobs/list",
                 type: 'GET',
                 dataType: 'json',
                 headers: {
@@ -76,7 +76,7 @@ $(function () {
 
     function login() {
         $.ajax({
-            url: "https://jayjobboard.azurewebsites.net/api/token",
+            url: "http://localhost:9696/api/token",
             type: 'GET',
             dataType: 'json',
             success: function (result) {
@@ -111,7 +111,7 @@ $(function () {
         if (token) {
             $.ajax({
                 contentType: "application/json",
-                url: "https://jayjobboard.azurewebsites.net/api/jobs/create",
+                url: "http://localhost:9696/api/jobs/create",
                 type: 'POST',
                 data: JSON.stringify(formData),
                 dataType: 'text',
