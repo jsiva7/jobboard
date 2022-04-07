@@ -1,2 +1,2 @@
-# pulsifi-jobboard
+# jobboard
 Simple Job Board Project
