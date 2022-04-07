@@ -36,14 +36,14 @@ module.exports = {
                 return res.status(403).send({ auth: false, message: 'No token provided.' });
 
             // verifies secret and checks exp
-            // jwt.verify(token, process.env.JWT_SECRET, function (err, decoded) {
-            //     if (err)
-            //         return res.status(500).send({ auth: false, message: 'Auth failed.' });
+            jwt.verify(token, process.env.JWT_SECRET, function (err, decoded) {
+                if (err)
+                    return res.status(500).send({ auth: false, message: 'Auth failed.' });
 
-            //     if (decoded.purpose == "demo") {
-            //         next();
-            //     }
-            // });
+                if (decoded.purpose == "demo") {
+                    next();
+                }
+            });
 
             next();
 

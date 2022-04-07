@@ -4,7 +4,7 @@ $(function () {
 
     function getlist() {
         var token = localStorage.getItem("token");
-        
+
         if (token) {
             $.ajax({
                 url: "https://jayjobboard.azurewebsites.net/api/jobs/list",
@@ -62,6 +62,9 @@ $(function () {
                             login()
                         } else {
                         }
+                    } else if (xhr.status == 500) {
+                        var err = JSON.parse(xhr.responseText);
+                        alert(err.error);
                     }
                 }
             });
@@ -132,6 +135,9 @@ $(function () {
                         } else {
                         }
                     } else if (xhr.status == 422) {
+                        var err = JSON.parse(xhr.responseText);
+                        alert(err.error);
+                    } else if (xhr.status == 500) {
                         var err = JSON.parse(xhr.responseText);
                         alert(err.error);
                     }
