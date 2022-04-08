@@ -7,7 +7,7 @@ $(function () {
 
         if (token) {
             $.ajax({
-                url: "http://localhost:9696/api/jobs/list",
+                url: "https://jayjobboard.azurewebsites.net/api/jobs/list",
                 type: 'GET',
                 dataType: 'json',
                 headers: {
@@ -79,7 +79,7 @@ $(function () {
 
     function login() {
         $.ajax({
-            url: "http://localhost:9696/api/token",
+            url: "https://jayjobboard.azurewebsites.net/api/token",
             type: 'GET',
             dataType: 'json',
             success: function (result) {
@@ -114,7 +114,7 @@ $(function () {
         if (token) {
             $.ajax({
                 contentType: "application/json",
-                url: "http://localhost:9696/api/jobs/create",
+                url: "https://jayjobboard.azurewebsites.net/api/jobs/create",
                 type: 'POST',
                 data: JSON.stringify(formData),
                 dataType: 'text',
